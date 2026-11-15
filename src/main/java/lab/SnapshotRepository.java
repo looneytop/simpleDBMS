@@ -5,6 +5,7 @@ import java.nio.file.*;
 import java.nio.channels.FileChannel;
 import java.util.function.Consumer;
 
+/** Хранит согласованный сериализованный снимок и предыдущий корректный снимок. */
 public class SnapshotRepository {
     private final Path file;
     private final Path backup;
@@ -16,6 +17,7 @@ public class SnapshotRepository {
         this.warning = warning;
     }
 
+    /** При повреждении основного файла восстанавливает его из проверенной копии. */
     public Database load() {
         if (!Files.exists(file) && !Files.exists(backup)) {
             return new Database();
@@ -33,6 +35,7 @@ public class SnapshotRepository {
         }
     }
 
+    /** Сначала сбрасывает временный файл, затем заменяет основной снимок. */
     public void save(Database database) {
         Path temporary = null;
         try {

@@ -3,9 +3,11 @@ package lab;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+/** Поддерживаемые типы и строгое преобразование SQL-литералов. */
 public enum DataType {
     INT, DOUBLE, STRING, DATE, BOOLEAN;
 
+    /** Преобразует литерал с учётом кавычек; NULL допустим для любого типа. */
     public Object parse(Parser.Literal literal) {
         String value = literal.text();
         if (!literal.quoted() && value.equalsIgnoreCase("NULL")) {

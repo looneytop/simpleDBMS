@@ -3,6 +3,7 @@ package lab;
 import java.io.*;
 import java.util.*;
 
+/** Читает команды до разделителя вне кавычек, выводит результаты и ошибки. */
 public final class Console {
     private final Engine engine;
     private final PrintWriter output;
@@ -13,6 +14,7 @@ public final class Console {
         this.diagnostics = diagnostics;
     }
 
+    /** EOF завершает последний запрос без точки с запятой, если кавычки закрыты. */
     public void run(Reader reader, boolean interactive) throws IOException {
         PushbackReader input = new PushbackReader(reader, 1);
         StringBuilder buffer = new StringBuilder();

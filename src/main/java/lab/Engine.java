@@ -2,6 +2,7 @@ package lab;
 
 import java.util.*;
 
+/** Выполняет команды, проверяет ключи и публикует изменения только после сохранения. */
 public final class Engine {
     public enum Search { SCAN, INDEX }
     public record Result(List<String> columns, List<List<Object>> rows, int affected, String message,
@@ -14,10 +15,12 @@ public final class Engine {
         database = repository.load();
     }
 
+    /** Выполняет одну SQL-команду. Ошибка не меняет опубликованное состояние. */
     public Result execute(String sql) {
         return execute(Parser.parse(sql), true);
     }
 
+    /** Отключение индекса служит для проверки результатов и честного бенчмарка. */
     public Result execute(Parser.Command command, boolean useIndex) {
         if (command instanceof Parser.Select select) {
             return select(select, useIndex);

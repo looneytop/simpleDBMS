@@ -4,6 +4,7 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.stream.Stream;
 
+/** Отдельный воспроизводимый замер SELECT с получением всех строк результата. */
 public final class Benchmark {
     private static volatile int consumed;
     public static void main(String[] args) throws Exception {

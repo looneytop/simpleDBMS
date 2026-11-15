@@ -2,6 +2,7 @@ package lab;
 
 import java.util.*;
 
+/** Небольшой последовательный парсер поддерживаемого подмножества SQL. */
 public final class Parser {
     public interface Command { }
     public record Literal(String text, boolean quoted) { }
@@ -20,6 +21,7 @@ public final class Parser {
         tokens = Tokenizer.tokenize(sql);
     }
 
+    /** Разбирает ровно одну команду и отклоняет оставшийся текст. */
     public static Command parse(String sql) {
         Parser parser = new Parser(sql);
         Command result = parser.command();

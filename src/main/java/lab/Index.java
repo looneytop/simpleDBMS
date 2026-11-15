@@ -3,6 +3,7 @@ package lab;
 import java.io.Serializable;
 import java.util.*;
 
+/** Упорядоченный вторичный индекс. NULL не входит в обычные сравнения и не хранится. */
 public final class Index implements Serializable {
     private static final long serialVersionUID = 1L;
     final String name;
@@ -53,6 +54,7 @@ public final class Index implements Serializable {
         }
     }
 
+    /** Возвращает только ключи подходящих строк, включая диапазонные условия. */
     Set<Object> find(String operator, Object value) {
         Set<Object> result = new LinkedHashSet<>();
         if (value == null) {

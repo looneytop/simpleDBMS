@@ -3,10 +3,12 @@ package lab;
 import java.io.Serializable;
 import java.util.*;
 
+/** Снимок всей базы: схемы, строки и содержимое индексов. */
 public final class Database implements Serializable {
     private static final long serialVersionUID = 1L;
     final Map<String, Table> tables = new LinkedHashMap<>();
 
+    /** Независимая копия нужна для отклонения всего запроса при любой ошибке. */
     Database copy() {
         Database copy = new Database();
         for (Table table : tables.values()) {
@@ -23,9 +25,11 @@ public final class Database implements Serializable {
         return table;
     }
 
+    /** Описание столбца и необязательной ссылки на первичный ключ. */
     public record Column(String name, DataType type, boolean primary, String parentTable,
                          String parentColumn) implements Serializable { }
 
+    /** Строки доступны по первичному ключу без полного просмотра таблицы. */
     public static final class Table implements Serializable {
         private static final long serialVersionUID = 1L;
         final String name;

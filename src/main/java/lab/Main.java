@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
+/** Точка входа: необязательные аргументы --data каталог и --diagnostics. */
 public final class Main {
     public static void main(String[] args) {
         Path directory = Path.of("data");

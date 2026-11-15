@@ -2,9 +2,11 @@ package lab;
 
 import java.util.*;
 
+/** Выделяет строки, слова, числа и знаки, не разделяя содержимое кавычек. */
 public final class Tokenizer {
     public record Token(String text, boolean quoted) { }
 
+    /** Два апострофа внутри строки обозначают один апостроф. */
     public static List<Token> tokenize(String sql) {
         List<Token> tokens = new ArrayList<>();
         int i = 0;
