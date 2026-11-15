@@ -167,10 +167,3 @@ java -Xms256m -Xmx1g -cp target/simple-db-1.0.jar lab.Benchmark
 Сохранение полного снимка упрощает восстановление, но делает частые одиночные
 вставки дорогими. Вся база находится в памяти. Поддерживается только описанное
 подмножество SQL: без JOIN, AND/OR, вложенных запросов и агрегатных функций.
-
-## Источники
-
-- Задание лабораторной работы № 2.
-- [Java SE 17: TreeMap](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html).
-- [Java SE 17: ObjectOutputStream](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/ObjectOutputStream.html).
-- [Java SE 17: Files](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Files.html).
