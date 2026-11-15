@@ -1,0 +1,16 @@
+/target/
+*.class
+*.jar
+
+/data/
+database.bin
+database.bak
+snapshot-*.tmp
+backup-*.tmp
+
+/.idea/
+*.iml
+/.vscode/
+.DS_Store
+
+*.log
